@@ -1,16 +1,16 @@
 {
   "type": "commonjs",
   "name": "badly-translate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Runs text through multiple layers of translation to make it badly translated",
   "main": "index.js",
-  "author": "MeijiRestored",
+  "author": "Kiriyashiki",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MeijiRestored/badly-translate.git"
+    "url": "https://github.com/Kiriyashiki/badly-translate.git"
   },
-  "homepage": "https://github.com/MeijiRestored/badly-translate",
+  "homepage": "https://github.com/Kiriyashiki/badly-translate",
   "keywords": [
     "translate",
     "translator",
@@ -18,9 +18,9 @@
     "language"
   ],
   "dependencies": {
-    "@translate-tools/core": "^2.0.1"
+    "anylang": "^3.3.0"
   },
   "engines": {
-		"node": ">=20"
-	}
+    "node": ">=20"
+  }
 }

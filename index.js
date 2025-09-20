@@ -1,7 +1,6 @@
 const {
-  GoogleTranslator,
-  supportedLanguages,
-} = require("@translate-tools/core/translators/GoogleTranslator");
+  GoogleTranslator
+} = require("anylang/translators/GoogleTranslator");
 
 const translator = new GoogleTranslator({
   headers: {
@@ -11,6 +10,7 @@ const translator = new GoogleTranslator({
 });
 
 const limit = translator.getLengthLimit();
+const supportedLanguages = GoogleTranslator.getSupportedLanguages();
 
 /**
  * Badly translate text.
@@ -20,9 +20,9 @@ const limit = translator.getLengthLimit();
  * 
  */
 async function badlyTranslate(text, iter, lang) {
-  var batch = [];
+  let batch = [];
   batch = text.split("\n");
-  for (var i = 0; i < batch.length; i++) {
+  for (let i = 0; i < batch.length; i++) {
     if (batch[i].length > limit) {
       throw new Error(
         `Character limit exceeded on text line ${
@@ -32,17 +32,17 @@ async function badlyTranslate(text, iter, lang) {
     }
   }
 
-  var result = batch;
-  var prevlang = lang;
+  let result = batch;
+  let prevlang = lang;
 
-  for (var i = 0; i < iter - 1; i++) {
-    var toLang = supportedLanguages[Math.floor(Math.random() * supportedLanguages.length)];
+  for (let i = 0; i < iter - 1; i++) {
+    let toLang = supportedLanguages[Math.floor(Math.random() * supportedLanguages.length)];
     result = await translator.translateBatch(result, prevlang, toLang);
     prevlang = toLang;
   }
 
   result = await translator.translateBatch(result, prevlang, lang);
-  var resString = result.join("\n");
+  let resString = result.join("\n");
 
   return resString;
 }
